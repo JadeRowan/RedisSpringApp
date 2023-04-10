@@ -6,31 +6,56 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.7.2</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
+
+    <modules>
+        <module>Services</module>
+        <module>Services/ProductAmountService</module>
+        <module>Services/ProductDescriptionService</module>
+        <module>Services/ProductReviewService</module>
+        <module>RedisApp</module>
+    </modules>
+
     <groupId>com.javatechie</groupId>
     <artifactId>spring-data-redis-example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-data-redis-example</name>
-    <description>Demo project for Spring Boot</description>
-
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
     </properties>
+    <packaging>pom</packaging>
 
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>com.javatechie</groupId>-->
+<!--            <artifactId>ProductAmountService</artifactId>-->
+<!--            <version>${project.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.javatechie</groupId>-->
+<!--            <artifactId>ProductDescriptionService</artifactId>-->
+<!--            <version>${project.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.javatechie</groupId>-->
+<!--            <artifactId>ProductReviewService</artifactId>-->
+<!--            <version>${project.version}</version>-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>3.7.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -55,8 +80,25 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <finalName>word-document-calc</finalName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>

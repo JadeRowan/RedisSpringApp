@@ -1,7 +1,4 @@
-package redis.app.entyty;
-
-import java.io.Serializable;
-
+package redis.app.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,15 +6,18 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
+import java.io.Serializable;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@RedisHash("Product")
+@RedisHash(value = "Product", timeToLive = 30L)
 public class Product implements Serializable {
     @Id
     private Long id;
-    private String name;
-    private int amount;
-    private double price;
+    private Long productAmount;
+    private ProductDescription description;
+    private List<String> productReview;
 }
 
